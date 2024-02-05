@@ -1,0 +1,28 @@
+
+State Machine - |Lab1|next_state
+Name next_state.DISPLAY_E next_state.DISPLAY_D next_state.DISPLAY_C next_state.DISPLAY_B next_state.DISPLAY_A next_state.INIT6 next_state.INIT5 next_state.INIT4 next_state.INIT3 next_state.INIT2 next_state.INIT1 
+next_state.INIT1 0 0 0 0 0 0 0 0 0 0 0 
+next_state.INIT2 0 0 0 0 0 0 0 0 0 1 1 
+next_state.INIT3 0 0 0 0 0 0 0 0 1 0 1 
+next_state.INIT4 0 0 0 0 0 0 0 1 0 0 1 
+next_state.INIT5 0 0 0 0 0 0 1 0 0 0 1 
+next_state.INIT6 0 0 0 0 0 1 0 0 0 0 1 
+next_state.DISPLAY_A 0 0 0 0 1 0 0 0 0 0 1 
+next_state.DISPLAY_B 0 0 0 1 0 0 0 0 0 0 1 
+next_state.DISPLAY_C 0 0 1 0 0 0 0 0 0 0 1 
+next_state.DISPLAY_D 0 1 0 0 0 0 0 0 0 0 1 
+next_state.DISPLAY_E 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Lab1|state
+Name state.DISPLAY_E state.DISPLAY_D state.DISPLAY_C state.DISPLAY_B state.DISPLAY_A state.INIT6 state.INIT5 state.INIT4 state.INIT3 state.INIT2 state.INIT1 
+state.INIT1 0 0 0 0 0 0 0 0 0 0 0 
+state.INIT2 0 0 0 0 0 0 0 0 0 1 1 
+state.INIT3 0 0 0 0 0 0 0 0 1 0 1 
+state.INIT4 0 0 0 0 0 0 0 1 0 0 1 
+state.INIT5 0 0 0 0 0 0 1 0 0 0 1 
+state.INIT6 0 0 0 0 0 1 0 0 0 0 1 
+state.DISPLAY_A 0 0 0 0 1 0 0 0 0 0 1 
+state.DISPLAY_B 0 0 0 1 0 0 0 0 0 0 1 
+state.DISPLAY_C 0 0 1 0 0 0 0 0 0 0 1 
+state.DISPLAY_D 0 1 0 0 0 0 0 0 0 0 1 
+state.DISPLAY_E 1 0 0 0 0 0 0 0 0 0 1 

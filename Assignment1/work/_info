@@ -1,0 +1,54 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/20.1
+Eassignment1
+Z0 w1706517287
+Z1 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 0
+Z4 dC:/Users/Tom/Desktop/ENSC350/Assignment1
+Z5 8C:/Users/Tom/Desktop/ENSC350/Assignment1/Lab1.vhd
+Z6 FC:/Users/Tom/Desktop/ENSC350/Assignment1/Lab1.vhd
+l0
+L8 1
+V34NXTKF5]RV3_WQldzV882
+!s100 `eDEn715HB^f^<YUzM9P^3
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1706517635
+!i10b 1
+Z9 !s108 1706517635.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Assignment1/Lab1.vhd|
+!s107 C:/Users/Tom/Desktop/ENSC350/Assignment1/Lab1.vhd|
+!i113 1
+Z11 o-work work -2002 -explicit
+Z12 tExplicit 1 CvgOpt 0
+Abehavioural
+R1
+R2
+R3
+DEx4 work 11 assignment1 0 22 34NXTKF5]RV3_WQldzV882
+!i122 0
+l28
+L23 97
+Va70G3bFQgYg9D4de7OaBO1
+!s100 `SNKm<GT6`;mDfbUcMmaU3
+R7
+32
+R8
+!i10b 1
+R9
+R10
+Z13 !s107 C:/Users/Tom/Desktop/ENSC350/Assignment1/Lab1.vhd|
+!i113 1
+R11
+R12

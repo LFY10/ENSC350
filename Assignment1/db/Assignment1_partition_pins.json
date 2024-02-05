@@ -1,0 +1,17 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "LCD_EN",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[3]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

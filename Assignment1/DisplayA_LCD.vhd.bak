@@ -1,0 +1,54 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity DisplayA_LCD is
+    port(
+        LCD_RS : out std_logic;  -- Register Select: 0 for command, 1 for data
+        LCD_EN : out std_logic;  -- Enable
+        LCD_RW : out std_logic;  -- Read/Write Select: 0 for write, 1 for read
+        LCD_DATA : out std_logic_vector(7 downto 0)  -- Data bus
+    );
+end DisplayA_LCD;
+
+architecture Behavioral of DisplayA_LCD is
+
+begin
+    process
+    begin
+        -- Initialization sequence
+        LCD_RS <= '0';
+        LCD_RW <= '0';
+        LCD_EN <= '1';
+        LCD_DATA <= "00111000";  -- Function Set: 8-bit, 2 line, 5x8 dots
+        wait for 5 ms;
+        LCD_EN <= '0';
+        wait for 5 ms;
+
+        LCD_EN <= '1';
+        LCD_DATA <= "00001100";  -- Display ON, Cursor OFF, Blink OFF
+        wait for 5 ms;
+        LCD_EN <= '0';
+        wait for 5 ms;
+
+        LCD_EN <= '1';
+        LCD_DATA <= "00000001";  -- Clear Display
+        wait for 5 ms;
+        LCD_EN <= '0';
+        wait for 5 ms;
+
+        LCD_EN <= '1';
+        LCD_DATA <= "00000110";  -- Entry Mode Set: Increment cursor, No shift
+        wait for 5 ms;
+        LCD_EN <= '0';
+        wait for 5 ms;
+
+        -- Display letter 'A'
+        LCD_RS <= '1';  -- Set RS for character mode
+        LCD_EN <= '1';
+        LCD_DATA <= "01000001";  -- ASCII code for 'A'
+        wait for 5 ms;
+        LCD_EN <= '0';
+        wait;
+
+    end process;
+end Behavioral;

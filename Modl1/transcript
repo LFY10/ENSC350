@@ -1,0 +1,21 @@
+# Compile of Modl_tb.vhd was successful.
+# Compile of Modl1.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.lab1_tb
+# vsim work.lab1_tb 
+# Start time: 16:59:23 on Jan 30,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading work.lab1_tb(behavior)
+# Loading work.lab1(behavioural)
+add wave -position insertpoint  \
+sim:/lab1_tb/KEY(3) \
+sim:/lab1_tb/KEY(0) \
+sim:/lab1_tb/SW(0) \
+sim:/lab1_tb/LEDG \
+sim:/lab1_tb/LEDR
+run
+# End time: 21:59:24 on Jan 30,2024, Elapsed time: 5:00:01
+# Errors: 0, Warnings: 2

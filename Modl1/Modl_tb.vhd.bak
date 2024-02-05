@@ -1,0 +1,102 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_arith.ALL;
+
+ENTITY lab1_tb IS
+END lab1_tb;
+
+ARCHITECTURE behavior OF lab1_tb IS 
+
+    -- Component Declaration for the Unit Under Test (UUT)
+    COMPONENT lab1
+    PORT(
+         KEY : IN  std_logic_vector(3 downto 0);
+         SW : IN  std_logic_vector(8 downto 0);
+         LEDG : OUT  std_logic_vector(7 downto 0);
+         LEDR : OUT  std_logic_vector(7 downto 0);
+         LCD_RW : OUT  std_logic;
+         LCD_EN : OUT  std_logic;
+         LCD_RS : OUT  std_logic;
+         LCD_ON : OUT  std_logic;
+         LCD_BLON : OUT  std_logic;
+         LCD_DATA : OUT  std_logic_vector(7 downto 0)
+        );
+    END COMPONENT;
+   
+    --Inputs
+    signal KEY : std_logic_vector(3 downto 0) := (others => '1');
+    signal SW : std_logic_vector(8 downto 0) := (others => '0');
+
+    --Outputs
+    signal LEDG : std_logic_vector(7 downto 0);
+    signal LEDR : std_logic_vector(7 downto 0);
+    signal LCD_RW : std_logic;
+    signal LCD_EN : std_logic;
+    signal LCD_RS : std_logic;
+    signal LCD_ON : std_logic;
+    signal LCD_BLON : std_logic;
+    signal LCD_DATA : std_logic_vector(7 downto 0);
+
+BEGIN 
+
+    -- Instantiate the Unit Under Test (UUT)
+    uut: lab1 PORT MAP (
+          KEY => KEY,
+          SW => SW,
+          LEDG => LEDG,
+          LEDR => LEDR,
+          LCD_RW => LCD_RW,
+          LCD_EN => LCD_EN,
+          LCD_RS => LCD_RS,
+          LCD_ON => LCD_ON,
+          LCD_BLON => LCD_BLON,
+          LCD_DATA => LCD_DATA
+        );
+
+   -- Stimulus process
+stim_proc: process
+begin		
+    -- Reset
+    KEY(3) <= '0';
+    wait for 6 ns;  
+    KEY(3) <= '1';
+    
+    -- Initial setup for SW and KEY to observe initial LEDR and LEDG states
+    SW <= (others => '0'); -- Initial state
+    wait for 12 ns; -- Observe initial state
+    
+    -- Simulate different scenarios
+    for i in 1 to 20 loop -- Adjust loop count based on how many scenarios you want to simulate
+        
+        -- Toggle clock
+        KEY(0) <= NOT KEY(0); 
+        wait for 6 ns;
+        
+        -- Change SW signals to simulate different conditions on each iteration
+        -- Here, we're simply toggling a single switch for demonstration purposes.
+        -- You can design more complex scenarios based on your design requirements.
+        
+        if i mod 2 = 0 then
+            SW(0) <= NOT SW(0); -- Toggle SW(0) every other iteration
+        end if;
+        
+        if i mod 3 = 0 then
+            SW(1) <= NOT SW(1); -- Toggle SW(1) every third iteration for variety
+        end if;
+        
+        -- Add more conditions as needed to simulate different scenarios
+        -- For example, set SW to a specific pattern:
+        if i = 5 then
+            SW <= "100000001"; -- Specific condition at iteration 5
+        end if;
+        
+        -- Ensure LEDs are given time to reflect changes
+        wait for 6 ns; -- Adjust time as necessary to observe changes
+        
+    end loop;
+    
+    wait;
+end process;
+
+
+END behavior;
