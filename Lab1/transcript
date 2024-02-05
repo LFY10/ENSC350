@@ -1,0 +1,35 @@
+# Compile of Lab1.vhd was successful.
+# Compile of Lab1_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.lab1_tb
+# vsim work.lab1_tb 
+# Start time: 14:49:45 on Jan 30,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.lab1_tb(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.numeric_std(body)
+# Loading work.lab1(behavioural)
+# ** Fatal: (vsim-3817) Port "CLOCK_50" of entity "lab1" is not in the component being instantiated.
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/uut File: C:/Users/Tom/Desktop/ENSC350/Lab1/Lab1.vhd Line: 9
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 14:49:45 on Jan 30,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 2
+vsim work.lab1_tb
+# vsim work.lab1_tb 
+# Start time: 14:49:58 on Jan 30,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.lab1_tb(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.numeric_std(body)
+# Loading work.lab1(behavioural)
+# ** Fatal: (vsim-3817) Port "CLOCK_50" of entity "lab1" is not in the component being instantiated.
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/uut File: C:/Users/Tom/Desktop/ENSC350/Lab1/Lab1.vhd Line: 9
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 14:49:59 on Jan 30,2024, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 1

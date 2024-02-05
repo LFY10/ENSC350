@@ -1,0 +1,97 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Tom/Desktop/ENSC350/Assignment1
+Elab1
+Z0 w1706654316
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 4
+Z5 dC:/Users/Tom/Desktop/ENSC350/Lab1
+Z6 8C:/Users/Tom/Desktop/ENSC350/Lab1/Lab1.vhd
+Z7 FC:/Users/Tom/Desktop/ENSC350/Lab1/Lab1.vhd
+l0
+L7 1
+Vk=gRk3D`]zNHi[MzW_jCM3
+!s100 7IAC:;OK<zE:8A6>ERYlo2
+Z8 OV;C;2020.1;71
+32
+Z9 !s110 1706654971
+!i10b 1
+Z10 !s108 1706654970.000000
+Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Lab1/Lab1.vhd|
+Z12 !s107 C:/Users/Tom/Desktop/ENSC350/Lab1/Lab1.vhd|
+!i113 1
+Z13 o-work work -2002 -explicit
+Z14 tExplicit 1 CvgOpt 0
+Abehavioural
+R1
+R2
+R3
+R4
+DEx4 work 4 lab1 0 22 k=gRk3D`]zNHi[MzW_jCM3
+!i122 4
+l40
+L23 183
+V[_g7HP>biL5XJE8hV;@@F2
+!s100 gY]cLD;GW?TiFaJ^X9z]R2
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Elab1_tb
+Z15 w1706585481
+R3
+R4
+!i122 5
+R5
+Z16 8C:/Users/Tom/Desktop/ENSC350/Lab1/Lab1_tb.vhd
+Z17 FC:/Users/Tom/Desktop/ENSC350/Lab1/Lab1_tb.vhd
+l0
+L4 1
+VU57D`CCmJH5Z94_Y0MbK82
+!s100 TZ:_V:ikN;:KSCTeCka;R1
+R8
+32
+R9
+!i10b 1
+Z18 !s108 1706654971.000000
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Lab1/Lab1_tb.vhd|
+Z20 !s107 C:/Users/Tom/Desktop/ENSC350/Lab1/Lab1_tb.vhd|
+!i113 1
+R13
+R14
+Abehavior
+R3
+R4
+Z21 DEx4 work 7 lab1_tb 0 22 U57D`CCmJH5Z94_Y0MbK82
+!i122 5
+l37
+Z22 L8 63
+Z23 VKQ@hhCNElM3hnLMBaCg6O3
+Z24 !s100 AgD[mNAeXb?>;LNZhPF>d0
+R8
+32
+R9
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R13
+R14

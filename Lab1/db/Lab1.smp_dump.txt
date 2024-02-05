@@ -1,0 +1,15 @@
+
+State Machine - |lab1|st
+Name st.clear_screen st.s6 st.s5 st.s4 st.s3 st.s2 st.st_A st.st_E st.st_D st.st_c st.st_B st.s1 
+st.s1 0 0 0 0 0 0 0 0 0 0 0 0 
+st.st_B 0 0 0 0 0 0 0 0 0 0 1 1 
+st.st_c 0 0 0 0 0 0 0 0 0 1 0 1 
+st.st_D 0 0 0 0 0 0 0 0 1 0 0 1 
+st.st_E 0 0 0 0 0 0 0 1 0 0 0 1 
+st.st_A 0 0 0 0 0 0 1 0 0 0 0 1 
+st.s2 0 0 0 0 0 1 0 0 0 0 0 1 
+st.s3 0 0 0 0 1 0 0 0 0 0 0 1 
+st.s4 0 0 0 1 0 0 0 0 0 0 0 1 
+st.s5 0 0 1 0 0 0 0 0 0 0 0 1 
+st.s6 0 1 0 0 0 0 0 0 0 0 0 1 
+st.clear_screen 1 0 0 0 0 0 0 0 0 0 0 1 

@@ -1,0 +1,73 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity Lab1 is
+    port(
+        KEY : in std_logic_vector(3 downto 0);  -- pushbutton switches
+        SW : in std_logic_vector(8 downto 0);  -- slide switches
+        LEDG : out std_logic_vector(7 downto 0); -- green LED's
+        LCD_RW : out std_logic;  -- R/W control signal for the LCD
+        LCD_EN : out std_logic;  -- Enable control signal for the LCD
+        LCD_RS : out std_logic;  -- Instruction/Data select for the LCD
+        LCD_ON : out std_logic;  -- LCD power control
+        LCD_BLON : out std_logic; -- LCD backlight control
+        LCD_DATA : out std_logic_vector(7 downto 0)  -- Data bus for the LCD
+    );
+end Lab1;
+
+architecture behavioural of Lab1 is
+    type state_type is (Init1, Init2, Init3, Init4, Init5, DisplayA);
+    signal state : state_type := Init1;
+    signal next_state : state_type;
+begin
+    LCD_BLON <= '1';   -- backlight is always on
+    LCD_ON <= '1';     -- LCD is always on
+    LCD_RW <= '0';     -- always writing to the LCD
+    LCD_EN <= KEY(3);  -- connect the clock to the LCD_en input
+
+    process(KEY(3))
+    begin
+        if falling_edge(KEY(3)) then
+            state <= next_state;
+        end if;
+    end process;
+
+    process(state)
+    begin
+        case state is
+            when Init1 =>
+                LCD_RS <= '0';
+                LCD_DATA <= "00111000";  -- Function Set
+                next_state <= Init2;
+
+            when Init2 =>
+                LCD_RS <= '0';
+                LCD_DATA <= "00001100";  -- Display ON
+                next_state <= Init3;
+
+            when Init3 =>
+                LCD_RS <= '0';
+                LCD_DATA <= "00000001";  -- Clear Display
+                next_state <= Init4;
+
+            when Init4 =>
+                LCD_RS <= '0';
+                LCD_DATA <= "00000110";  -- Entry Mode Set
+                next_state <= Init5;
+
+            when Init5 =>
+                LCD_RS <= '0';
+                LCD_DATA <= "00111000";  -- Function Set (repeat)
+                next_state <= DisplayA;
+
+            when DisplayA =>
+                LCD_RS <= '1';
+                LCD_DATA <= "01000001";  -- ASCII for 'A'
+                next_state <= DisplayA;  -- Stay here
+
+            when others =>
+                next_state <= Init1;
+        end case;
+    end process;
+end behavioural;
