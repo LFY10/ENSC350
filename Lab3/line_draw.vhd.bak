@@ -1,0 +1,106 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity line_drawer is
+  port(
+    clk       : in std_logic;
+    start     : in std_logic; -- Signal to start drawing
+    x1        : in integer range 0 to 159;
+    y1        : in integer range 0 to 119;
+    x2        : in integer range 0 to 159 := 80; -- Center x-coordinate
+    y2        : in integer range 0 to 119 := 60; -- Center y-coordinate
+    color     : in std_logic_vector(2 downto 0);
+    plot      : out std_logic; -- Signal to plot a point
+    x         : out std_logic_vector(7 downto 0);
+    y         : out std_logic_vector(6 downto 0);
+    done      : out std_logic  -- Signal when drawing is complete
+  );
+end entity;
+
+architecture behavior of line_drawer is
+  type state_type is (idle, draw, done_state);
+  signal curr_state, next_state : state_type := idle;
+
+  signal curr_x, curr_y : integer range 0 to 159 := 0;
+  signal target_x, target_y : integer range 0 to 159 := 0;
+  signal dx, dy, sx, sy, err, e2 : integer;
+
+begin
+
+  -- Main FSM Process
+  process(clk)
+  begin
+    if rising_edge(clk) then
+      curr_state <= next_state;
+    end if;
+  end process;
+
+  -- Next State Logic Process
+  process(curr_state, start, dx, dy, err)
+  begin
+    case curr_state is
+      when idle =>
+        if start = '1' then
+          next_state <= draw;
+        else
+          next_state <= idle;
+        end if;
+      when draw =>
+        if curr_x = target_x and curr_y = target_y then
+          next_state <= done_state;
+        else
+          next_state <= draw;
+        end if;
+      when done_state =>
+        next_state <= idle;
+      when others =>
+        next_state <= idle;
+    end case;
+  end process;
+
+  -- Output Logic Process
+  process(clk)
+  begin
+    if rising_edge(clk) then
+      case curr_state is
+        when idle =>
+          if start = '1' then
+            -- Initialize the Bresenham's algorithm parameters
+            curr_x <= x1;
+            curr_y <= y1;
+            target_x <= x2;
+            target_y <= y2;
+            dx <= abs(x2 - x1);
+            dy <= abs(y2 - y1) * -1; -- dy is negative because screen coordinates go top-down
+            sx <= if x1 < x2 then 1 else -1 end if;
+            sy <= if y1 < y2 then 1 else -1 end if;
+            err <= dx + dy;
+            plot <= '0';
+            done <= '0';
+          end if;
+        when draw =>
+          plot <= '1';
+          x <= std_logic_vector(to_unsigned(curr_x, x'length));
+          y <= std_logic_vector(to_unsigned(curr_y, y'length));
+          -- Bresenham's algorithm step
+          e2 := 2 * err;
+          if e2 >= dy then
+            err := err + dy;
+            curr_x := curr_x + sx;
+          end if;
+          if e2 <= dx then
+            err := err + dx;
+            curr_y := curr_y + sy;
+          end if;
+        when done_state =>
+          plot <= '0';
+          done <= '1';
+        when others =>
+          plot <= '0';
+          done <= '0';
+      end case;
+    end if;
+  end process;
+
+end architecture;

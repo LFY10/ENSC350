@@ -1,0 +1,34 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+
+ENTITY win IS
+    PORT(
+        spin_result_latched : in unsigned(5 downto 0);  -- result of the spin (the winning number)
+        bet1_value : in unsigned(5 downto 0);           -- value for bet 1
+        bet2_colour : in std_logic;                     -- colour for bet 2
+        bet3_dozen : in unsigned(1 downto 0);           -- dozen for bet 3
+        bet1_wins : out std_logic;                      -- whether bet 1 is a winner
+        bet2_wins : out std_logic;                      -- whether bet 2 is a winner
+        bet3_wins : out std_logic                       -- whether bet 3 is a winner
+    );
+END win;
+
+ARCHITECTURE behavioural OF win IS
+BEGIN
+    -- Bet 1 wins if the bet value matches the spin result
+    bet1_wins <= '1' WHEN spin_result_latched = bet1_value ELSE '0';
+
+    -- Bet 2 wins based on the color. Red is odd for 1-10, 19-28 and even for 11-18, 29-36
+    bet2_wins <= '1' WHEN (spin_result_latched >= "000001" AND spin_result_latched <= "010101" AND
+                            bet2_colour = std_logic'('1' WHEN (spin_result_latched mod 2 = 1) ELSE '0')) OR
+                           (spin_result_latched >= "010110" AND spin_result_latched <= "100100" AND
+                            bet2_colour = std_logic'('0' WHEN (spin_result_latched mod 2 = 1) ELSE '1'))
+                 ELSE '0';
+
+    -- Bet 3 wins based on the dozen range
+    bet3_wins <= '1' WHEN (bet3_dozen = "00" AND spin_result_latched >= "000001" AND spin_result_latched <= "001100") OR
+                          (bet3_dozen = "01" AND spin_result_latched >= "001101" AND spin_result_latched <= "011000") OR
+                          (bet3_dozen = "10" AND spin_result_latched >= "011001" AND spin_result_latched <= "100100")
+                 ELSE '0';
+END behavioural;

@@ -1,0 +1,135 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity lab3 is
+  port(CLOCK_50            : in  std_logic;
+       KEY                 : in  std_logic_vector(3 downto 0);
+       SW                  : in  std_logic_vector(17 downto 0);
+       VGA_R, VGA_G, VGA_B : out std_logic_vector(9 downto 0);  -- The outs go to VGA controller
+       VGA_HS              : out std_logic;
+       VGA_VS              : out std_logic;
+       VGA_BLANK           : out std_logic;
+       VGA_SYNC            : out std_logic;
+       VGA_CLK             : out std_logic);
+end lab3;
+
+architecture rtl of lab3 is
+
+  -- Declare the component 'Circuit'
+  component Circuit is
+    port(
+      KEY      : in  std_logic_vector(3 downto 0);
+      CLOCK_50 : in  std_logic;
+      SW       : in  std_logic_vector(17 downto 0);
+      colour   : out std_logic_vector(2 downto 0);
+      x        : out std_logic_vector(7 downto 0);
+      y        : out std_logic_vector(6 downto 0);
+      plot     : out std_logic
+    );
+  end component;
+
+ --Component from the Verilog file: vga_adapter.v
+
+  component vga_adapter
+    generic(RESOLUTION : string);
+    port (resetn                                       : in  std_logic;
+          clock                                        : in  std_logic;
+          colour                                       : in  std_logic_vector(2 downto 0);
+          x                                            : in  std_logic_vector(7 downto 0);
+          y                                            : in  std_logic_vector(6 downto 0);
+          plot                                         : in  std_logic;
+          VGA_R, VGA_G, VGA_B                          : out std_logic_vector(9 downto 0);
+          VGA_HS, VGA_VS, VGA_BLANK, VGA_SYNC, VGA_CLK : out std_logic);
+  end component;
+  
+  -- Signals for the Circuit
+  signal x      : std_logic_vector(7 downto 0);
+  signal y      : std_logic_vector(6 downto 0);
+  signal colour : std_logic_vector(2 downto 0);
+  signal plot   : std_logic;
+  signal resetn : std_logic;
+  
+  -- Signals for the Bresenham's algorithm
+  signal x1, y1, x2, y2 : integer := 0;
+  signal d, dx, dy : integer := 0;
+  signal curr_x, curr_y, xend : integer := 0;
+  signal x_step, y_step    : integer := 1; -- Used to increment or decrement x or y
+  
+begin
+
+	  -- Instantiate the 'Circuit' component
+  myCircuit: Circuit
+    port map(
+      KEY      => KEY,
+      CLOCK_50 => CLOCK_50,
+      SW       => SW,
+      colour   => colour,
+      x        => x,
+      y        => y,
+      plot     => plot
+    );
+	 
+  -- includes the vga adapter, which should be in your project 
+  vga_u0 : vga_adapter
+    generic map(RESOLUTION => "160x120") 
+    port map(resetn    => KEY(3),
+             clock     => CLOCK_50,
+             colour    => colour,
+             x         => x,
+             y         => y,
+             plot      => plot,
+             VGA_R     => VGA_R,
+             VGA_G     => VGA_G,
+             VGA_B     => VGA_B,
+             VGA_HS    => VGA_HS,
+             VGA_VS    => VGA_VS,
+             VGA_BLANK => VGA_BLANK,
+             VGA_SYNC  => VGA_SYNC,
+             VGA_CLK   => VGA_CLK);
+
+  -- Bresenham's line algorithm process
+  draw_line_process : process(CLOCK_50)
+  begin
+    if rising_edge(CLOCK_50) then
+      if KEY(1) = '0' then  -- Active low 'enter' command to start drawing
+        -- Enter values of x1, y1 (from center of screen) and x2, y2 (from dip switches)
+        x1 <= 80;  -- Center of the screen (for 160x120 resolution)
+        y1 <= 60;
+        x2 <= to_integer(unsigned(SW(17 downto 10))); 
+        y2 <= to_integer(unsigned(SW(9 downto 3)));
+		  colour <= SW(2 downto 0); -- Color is determined by switch settings
+
+		  dx <= abs(x2 - x1);
+        dy <= abs(y2 - y1);
+        d <= 2*dy - dx;
+        
+        if x1 > x2 then x_step := -1; else x_step := 1; end if;
+        if y1 > y2 then y_step := -1; else y_step := 1; end if;
+        
+        curr_x <= x1;
+        curr_y <= y1;
+        plot <= '1';  -- Start plotting
+      elsif plot = '1' then
+        -- Plot the current point
+        colour <= "111"; -- Set colour, for example, white
+
+        -- Algorithm to find the next point
+        if d > 0 then
+          curr_y <= curr_y + y_step;
+          d <= d - 2*dx;
+        end if;
+        curr_x <= curr_x + x_step;
+        d <= d + 2*dy;
+        
+        -- Terminate drawing when the end point is reached
+        if curr_x = x2 and curr_y = y2 then
+          plot <= '0'; -- Stop plotting
+        end if;
+      else
+        plot <= '0';  -- Ensure plot is reset if not drawing
+      end if;
+    end if;
+  end process;
+
+end rtl;

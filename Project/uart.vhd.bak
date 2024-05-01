@@ -1,0 +1,46 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity uart is
+    Port ( clk         : in  STD_LOGIC;
+           btn_start   : in  STD_LOGIC; -- Button for start signal
+           btn_reset   : in  STD_LOGIC; -- Button for reset (active low)
+           sw          : in  STD_LOGIC_VECTOR(7 downto 0); -- Switches for data input
+           rs232_tx    : out STD_LOGIC; -- UART transmit signal
+           done        : out STD_LOGIC  -- Transmission done signal
+          );
+end uart;
+
+architecture Behavioral of uart is
+    -- Instantiate the uart_tx component
+    component uart_tx is
+        Port ( clk      : in  STD_LOGIC;
+               rst_n    : in  STD_LOGIC;
+               start    : in  STD_LOGIC;
+               data     : in  STD_LOGIC_VECTOR(7 downto 0);
+               rs232_tx : out STD_LOGIC;
+               done     : out STD_LOGIC
+              );
+    end component;
+    
+    signal rst_n_internal : STD_LOGIC := '1'; -- Internal reset signal (active low)
+    signal start_internal : STD_LOGIC := '0'; -- Internal start signal
+
+begin
+
+    -- Debounce logic or direct connection (simplified for this example)
+    rst_n_internal <= not btn_reset; -- Assuming active low reset
+    start_internal <= btn_start; -- Direct connection, consider debounce in real application
+
+    -- uart_tx instantiation
+    uart_instance : uart_tx
+        Port map (
+            clk      => clk,
+            rst_n    => rst_n_internal,
+            start    => start_internal,
+            data     => sw,
+            rs232_tx => rs232_tx,
+            done     => done
+        );
+
+end Behavioral;

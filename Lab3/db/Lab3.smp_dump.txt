@@ -1,0 +1,12 @@
+
+State Machine - |lab3|line_drawer:myLineDrawer|curr_state
+Name curr_state.done_state curr_state.draw curr_state.idle 
+curr_state.idle 0 0 0 
+curr_state.draw 0 1 1 
+curr_state.done_state 1 0 1 
+
+State Machine - |lab3|line_drawer:myLineDrawer|next_state
+Name next_state.done_state next_state.draw next_state.idle 
+next_state.idle 0 0 0 
+next_state.draw 0 1 1 
+next_state.done_state 1 0 1 

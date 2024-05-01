@@ -1,0 +1,142 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity uart_tx is
+    Port ( clk     : in  STD_LOGIC;
+           rst_n   : in  STD_LOGIC;
+           start   : in  STD_LOGIC;
+           data    : in  STD_LOGIC_VECTOR(7 downto 0);
+           rs232_tx: out STD_LOGIC;
+           done    : out STD_LOGIC
+          );
+end uart_tx;
+
+architecture Behavioral of uart_tx is
+    signal r_data   : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+    signal state    : STD_LOGIC := '0';
+    signal baud_cnt : INTEGER := 0;
+    signal bit_flag : STD_LOGIC := '0';
+    signal bit_cnt  : INTEGER := 0;
+	 signal done_sig : STD_LOGIC := '0';
+begin
+
+    -- r_data
+    process(clk, rst_n)
+    begin
+        if rst_n = '0' then
+            r_data <= (others => '0');
+        elsif rising_edge(clk) then
+            if start = '1' then
+                r_data <= data;
+            end if;
+        end if;
+    end process;
+
+    -- state
+    process(clk, rst_n)
+    begin
+        if rst_n = '0' then
+            state <= '0';
+        elsif rising_edge(clk) then
+            if start = '1' then
+                state <= '1';
+            elsif done_sig = '1' then
+                state <= '0';
+            end if;
+        end if;
+    end process;
+
+    -- baud_cnt
+    process(clk, rst_n)
+    begin
+        if rst_n = '0' then
+            baud_cnt <= 0;
+        elsif rising_edge(clk) then
+            if state = '1' then
+                if baud_cnt = 5208 then  --50M/9600 = 5208
+                    baud_cnt <= 0;
+                else
+                    baud_cnt <= baud_cnt + 1;
+                end if;
+            else
+                baud_cnt <= 0;
+            end if;
+        end if;
+    end process;
+
+    -- bit_flag
+    process(clk, rst_n)
+    begin
+        if rst_n = '0' then
+            bit_flag <= '0';
+        elsif rising_edge(clk) then
+            if baud_cnt = 1 then
+                bit_flag <= '1';
+            else
+                bit_flag <= '0';
+            end if;
+        end if;
+    end process;
+
+    -- bit_cnt
+    process(clk, rst_n)
+    begin
+        if rst_n = '0' then
+            bit_cnt <= 0;
+        elsif rising_edge(clk) then
+            if bit_flag = '1' then
+                if bit_cnt = 10 then --start+8bits+stop
+                    bit_cnt <= 0;
+                else
+                    bit_cnt <= bit_cnt + 1;
+                end if;
+            end if;
+        end if;
+    end process;
+
+    -- rs232_tx
+    process(clk, rst_n)
+    begin
+        if rst_n = '0' then
+            rs232_tx <= '1';
+        elsif rising_edge(clk) then
+            if state = '1' then
+                if bit_flag = '1' then
+                    case bit_cnt is
+                        when 0 => rs232_tx <= '0';
+                        when 1 => rs232_tx <= r_data(0);
+                        when 2 => rs232_tx <= r_data(1);
+                        when 3 => rs232_tx <= r_data(2);
+                        when 4 => rs232_tx <= r_data(3);
+                        when 5 => rs232_tx <= r_data(4);
+                        when 6 => rs232_tx <= r_data(5);
+                        when 7 => rs232_tx <= r_data(6);
+                        when 8 => rs232_tx <= r_data(7);
+                        when 9 => rs232_tx <= '1';
+                        when others => rs232_tx <= '1';
+                    end case;
+                end if;
+            else
+                rs232_tx <= '1';
+            end if;
+        end if;
+    end process;
+
+    -- done
+    process(clk, rst_n)
+    begin
+        if rst_n = '0' then
+            done_sig <= '0';
+        elsif rising_edge(clk) then
+            if bit_flag = '1' and bit_cnt = 10 then
+                done_sig <= '1';
+            else
+                done_sig <= '0';
+            end if;
+        end if;
+    end process;
+	 
+	 done <= done_sig;
+
+end Behavioral;

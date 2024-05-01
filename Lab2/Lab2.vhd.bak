@@ -1,0 +1,27 @@
+ENTITY win IS
+    PORT(
+        spin_result_latched : in unsigned(5 downto 0);  -- result of the spin (the winning number)
+        bet1_value : in unsigned(5 downto 0); -- value for bet 1 (Straight up bet)
+        bet2_colour : in std_logic;  -- colour for bet 2 (Red=1, Black=0)
+        bet3_dozen : in unsigned(1 downto 0);  -- dozen for bet 3 ([1,12]="00", [13,24]="01", [25,36]="10")
+        bet1_wins : out std_logic;  -- whether bet 1 is a winner
+        bet2_wins : out std_logic;  -- whether bet 2 is a winner
+        bet3_wins : out std_logic  -- whether bet 3 is a winner
+    );
+END win;
+
+ARCHITECTURE behavioural OF win IS
+BEGIN
+    -- Bet 1 wins if the predicted number matches the spin result
+    bet1_wins <= '1' WHEN spin_result_latched = bet1_value ELSE '0';
+
+    -- Bet 2 wins based on the colour. Assuming odd numbers are red ('1') and even numbers are black ('0').
+    -- Adjust the logic based on the actual color assignments of numbers if different.
+    bet2_wins <= '1' WHEN (spin_result_latched mod 2 = 0 AND bet2_colour = '0') OR
+                           (spin_result_latched mod 2 /= 0 AND bet2_colour = '1') ELSE '0';
+
+    -- Bet 3 wins if the spin result falls within the predicted dozen range
+    bet3_wins <= '1' WHEN (spin_result_latched >= 1 AND spin_result_latched <= 12 AND bet3_dozen = "00") OR
+                          (spin_result_latched >= 13 AND spin_result_latched <= 24 AND bet3_dozen = "01") OR
+                          (spin_result_latched >= 25 AND spin_result_latched <= 36 AND bet3_dozen = "10") ELSE '0';
+END behavioural;

@@ -1,0 +1,15 @@
+
+State Machine - |ksa|state
+Name state.state_done state.state_dec_write2 state.state_dec_write1 state.state_dec_read3 state.state_dec_read2 state.state_dec_read1 state.state_dec state.state_fill_write state.state_fill_read2 state.state_fill_read1 state.state_fill state.state_init 
+state.state_init 0 0 0 0 0 0 0 0 0 0 0 0 
+state.state_fill 0 0 0 0 0 0 0 0 0 0 1 1 
+state.state_fill_read1 0 0 0 0 0 0 0 0 0 1 0 1 
+state.state_fill_read2 0 0 0 0 0 0 0 0 1 0 0 1 
+state.state_fill_write 0 0 0 0 0 0 0 1 0 0 0 1 
+state.state_dec 0 0 0 0 0 0 1 0 0 0 0 1 
+state.state_dec_read1 0 0 0 0 0 1 0 0 0 0 0 1 
+state.state_dec_read2 0 0 0 0 1 0 0 0 0 0 0 1 
+state.state_dec_read3 0 0 0 1 0 0 0 0 0 0 0 1 
+state.state_dec_write1 0 0 1 0 0 0 0 0 0 0 0 1 
+state.state_dec_write2 0 1 0 0 0 0 0 0 0 0 0 1 
+state.state_done 1 0 0 0 0 0 0 0 0 0 0 1 

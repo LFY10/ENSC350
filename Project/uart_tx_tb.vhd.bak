@@ -1,0 +1,94 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity uart_tx_tb is
+-- Testbench has no ports.
+end uart_tx_tb;
+
+architecture behavior of uart_tx_tb is
+
+    -- Component Declaration for the Unit Under Test (UUT)
+    component uart_tx
+        Port ( clk : in STD_LOGIC;
+               rst_n : in STD_LOGIC;
+               start : in STD_LOGIC;
+               data : in STD_LOGIC_VECTOR(7 downto 0);
+               
+               rs232_tx : out STD_LOGIC;
+               done : out STD_LOGIC
+             );
+    end component;
+    
+    -- Inputs
+    signal clk : STD_LOGIC := '1';
+    signal rst_n : STD_LOGIC := '0';
+    signal start : STD_LOGIC := '0';
+    signal data : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+    
+    -- Outputs
+    signal rs232_tx : STD_LOGIC;
+    signal done : STD_LOGIC;
+
+begin
+
+    -- Instantiate the Unit Under Test (UUT)
+    uut: uart_tx
+        Port map (
+            clk => clk,
+            rst_n => rst_n,
+            start => start,
+            data => data,
+            
+            rs232_tx => rs232_tx,
+            done => done
+        );
+
+    -- Clock process definitions
+    clk_process : process
+    begin
+        clk <= '1';
+        wait for 10 ns;
+        clk <= '0';
+        wait for 10 ns;
+    end process;
+
+    -- Stimulus process
+    stim_proc: process
+    begin
+        -- Reset
+        rst_n <= '0';
+        start <= '0';
+        data <= (others => '0');
+        wait for 100 ns;        
+        rst_n <= '1';
+        
+        wait for 200 ns;        
+        
+        -- Test 1: Send data 0x55
+        data <= "01010101"; -- 'h55
+        start <= '1';
+        wait for 20 ns;
+        start <= '0';
+        wait for 20000 ns;
+        
+        -- Test 2: Send data 0x58
+        data <= "01011000"; -- 'h58
+        start <= '1';
+        wait for 20 ns;
+        start <= '0';
+        wait for 20000 ns;
+        
+        -- Test 3: Send data 0xB8
+        data <= "10111000"; -- 'hb8
+        start <= '1';
+        wait for 20 ns;
+        start <= '0';
+        wait for 20000 ns;
+        
+        -- End simulation
+        wait;
+    end process;
+
+end behavior;

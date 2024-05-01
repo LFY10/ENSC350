@@ -1,0 +1,46 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity horizontal_line_drawer is
+    port(
+        clk    : in  std_logic;
+        start  : in  std_logic; -- Start signal for drawing the line
+        x_start: in  integer range 0 to 159; -- Starting x-coordinate of the dot
+        y      : in  integer range 0 to 119; -- Constant y-coordinate of the line
+        plot   : out std_logic; -- Signal to plot a point
+        x      : out std_logic_vector(7 downto 0); -- X coordinate to plot
+        y_out  : out std_logic_vector(6 downto 0); -- Y coordinate to plot (constant across the line)
+        done   : out std_logic  -- Signal when drawing is complete
+    );
+end horizontal_line_drawer;
+
+architecture behavior of horizontal_line_drawer is
+begin
+    process(clk)
+        variable current_x : integer range 0 to 159 := 0;
+    begin
+        if rising_edge(clk) then
+            if start = '1' then
+                if current_x <= 159 then
+                    -- Plot the current point
+                    plot <= '1';
+                    x <= std_logic_vector(to_unsigned(current_x, 8));
+                    y_out <= std_logic_vector(to_unsigned(y, 7));
+
+                    -- Prepare to plot the next point
+                    current_x := current_x + 1;
+                    done <= '0';
+                else
+                    -- Finished drawing the line
+                    plot <= '0';
+                    done <= '1';
+                end if;
+            else
+                -- Reset for the next line drawing
+                current_x := x_start;
+                done <= '0';
+            end if;
+        end if;
+    end process;
+end behavior;

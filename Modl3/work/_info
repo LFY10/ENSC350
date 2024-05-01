@@ -1,0 +1,98 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Tom/Desktop/ENSC350/Modl2
+Ecircuit
+Z0 w1710461369
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 2
+Z4 dC:/Users/Tom/Desktop/ENSC350/Modl3
+Z5 8C:/Users/Tom/Desktop/ENSC350/Lab3/Circuit.vhd
+Z6 FC:/Users/Tom/Desktop/ENSC350/Lab3/Circuit.vhd
+l0
+L6 1
+V`OeZRn1cCV;LN`5C:8CeO3
+!s100 Zzn>>fBNH;X1Q]0CdgSGo1
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1710461565
+!i10b 1
+Z9 !s108 1710461565.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Lab3/Circuit.vhd|
+Z11 !s107 C:/Users/Tom/Desktop/ENSC350/Lab3/Circuit.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Abehavioral
+R1
+R2
+R3
+Z14 DEx4 work 7 circuit 0 22 `OeZRn1cCV;LN`5C:8CeO3
+!i122 2
+l22
+L19 22
+V^d=2X00>`LLG=kAN68;fK3
+!s100 RA]9Wl:ShLCoJLL5@?2gi0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Ecircuit_tb
+Z15 w1710459425
+R1
+R2
+R3
+!i122 3
+R4
+Z16 8C:/Users/Tom/Desktop/ENSC350/Lab3/Circuit_tb.vhd
+Z17 FC:/Users/Tom/Desktop/ENSC350/Lab3/Circuit_tb.vhd
+l0
+L5 1
+VL`9<;59f:cRVNoiig>Xc23
+!s100 zS42XMC2e?OKfcYORGY4g3
+R7
+32
+R8
+!i10b 1
+R9
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Lab3/Circuit_tb.vhd|
+Z19 !s107 C:/Users/Tom/Desktop/ENSC350/Lab3/Circuit_tb.vhd|
+!i113 1
+R12
+R13
+Atb
+R14
+R1
+R2
+R3
+Z20 DEx4 work 10 circuit_tb 0 22 L`9<;59f:cRVNoiig>Xc23
+!i122 3
+l21
+Z21 L9 65
+Z22 VCnonGco2Sn=>@6m`:]e]k1
+Z23 !s100 1DR7J<f0290z[0fPX2CC@0
+R7
+32
+R8
+!i10b 1
+R9
+R18
+R19
+!i113 1
+R12
+R13

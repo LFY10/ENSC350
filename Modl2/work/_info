@@ -1,0 +1,97 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/20.1
+Ewin
+Z0 w1707704545
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 2
+Z4 dC:/Users/Tom/Desktop/ENSC350/Modl2
+Z5 8C:/Users/Tom/Desktop/ENSC350/Lab2/win.vhd
+Z6 FC:/Users/Tom/Desktop/ENSC350/Lab2/win.vhd
+l0
+L5 1
+VUl3[Rn?n7TlPZP4o<jemK0
+!s100 ?oCWU[W_T:mHMFmUomn2o1
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1707704603
+!i10b 1
+Z9 !s108 1707704603.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Lab2/win.vhd|
+Z11 !s107 C:/Users/Tom/Desktop/ENSC350/Lab2/win.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Abehavioural
+R1
+R2
+R3
+DEx4 work 3 win 0 22 Ul3[Rn?n7TlPZP4o<jemK0
+!i122 2
+l19
+L17 34
+V^BTGcFXN1PR53`EjDhQ:d2
+!s100 dR3CjadlJQo]dRTcL6;XK3
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Ewin_tb
+Z14 w1707703831
+R1
+R2
+R3
+!i122 3
+R4
+Z15 8C:/Users/Tom/Desktop/ENSC350/Modl2/win_tb.vhd
+Z16 FC:/Users/Tom/Desktop/ENSC350/Modl2/win_tb.vhd
+l0
+L19 1
+Vh9l?:cYhX_;4I8`?>jLN<2
+!s100 ?bW4;<cNB[6C?mK[I5j;o3
+R7
+32
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Modl2/win_tb.vhd|
+Z18 !s107 C:/Users/Tom/Desktop/ENSC350/Modl2/win_tb.vhd|
+!i113 1
+R12
+R13
+Abehavioural
+R1
+R2
+R3
+Z19 DEx4 work 6 win_tb 0 22 h9l?:cYhX_;4I8`?>jLN<2
+!i122 3
+l87
+Z20 L25 141
+Z21 VD79nDTeVlUK_CCi<zezEa0
+Z22 !s100 Doh53H:gU_Z;446LVP8n[3
+R7
+32
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13

@@ -1,0 +1,69 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+ 
+LIBRARY WORK;
+USE WORK.ALL;
+
+--------------------------------------------------------------
+--
+-- Skeleton file for new_balance subblock.  This block is purely
+-- combinational and calculates the
+-- new balance after adding winning bets and subtracting losing bets.
+--
+---------------------------------------------------------------
+
+
+ENTITY new_balance IS
+  PORT(money : in unsigned(11 downto 0);  -- Current balance before this spin
+       value1 : in unsigned(2 downto 0);  -- Value of bet 1
+       value2 : in unsigned(2 downto 0);  -- Value of bet 2
+       value3 : in unsigned(2 downto 0);  -- Value of bet 3
+       bet1_wins : in std_logic;  -- True if bet 1 is a winner
+       bet2_wins : in std_logic;  -- True if bet 2 is a winner
+       bet3_wins : in std_logic;  -- True if bet 3 is a winner
+       new_money : out unsigned(11 downto 0));  -- balance after adding winning
+                                                -- bets and subtracting losing bets
+END new_balance;
+
+
+ARCHITECTURE behavioural OF new_balance IS
+BEGIN
+  -- Your code goes here
+  --process to calculate new balance using variables for immediate operations
+  PROCESS(money,value1,value2,value3,bet1_wins,bet2_wins,bet3_wins)
+		-- Declare a variable to perform the immediate calculation
+		VARIABLE temp_money: unsigned (11 downto 0);
+	BEGIN
+		-- Initialize tem_money the current balance
+		temp_money := money;
+		
+		-- if bet1 wins, add 35 times the value to the balance
+		-- else, substract the value1 from the balance
+		IF bet1_wins = '1' THEN
+			temp_money := temp_money + to_unsigned(35, 9) * value1;
+		ELSE
+			temp_money := temp_money - value1;
+		END IF;
+			
+		-- if bet2 wins, add value2 to the balance
+		-- else, substract the value2 from the balance
+		IF bet2_wins = '1' THEN
+			temp_money := temp_money + value2;
+		ELSE
+			temp_money := temp_money - value2;
+		END IF;
+		
+		-- if bet3 wins, add value3 to the balance
+		--- else, subsract the value3 from the balance
+		IF bet3_wins = '1' THEN
+			temp_money := temp_money + (2 * value3);
+		ELSE
+			temp_money := temp_money - value3;
+		END IF;
+		
+		-- update to new balance
+		new_money <= temp_money;
+	END PROCESS;
+		
+END behavioural;

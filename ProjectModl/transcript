@@ -1,0 +1,14 @@
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 10:03:42 on Apr 05,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(behavior)
+# Loading work.uart_tx(behavioral)
+# Loading work.uart_rx(behavior)
+add wave -position insertpoint sim:/uart_rx_tb/uart_tx_inst/*
+run
+# End time: 12:14:49 on Apr 05,2024, Elapsed time: 2:11:07
+# Errors: 0, Warnings: 1

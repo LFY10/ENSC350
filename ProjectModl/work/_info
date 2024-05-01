@@ -1,0 +1,183 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Tom/Desktop/ENSC350/Modl3
+Euart_rx
+Z0 w1712297711
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 84
+Z4 dC:/Users/Tom/Desktop/ENSC350/ProjectModl
+Z5 8C:/Users/Tom/Desktop/ENSC350/Project/uart_rx.vhd
+Z6 FC:/Users/Tom/Desktop/ENSC350/Project/uart_rx.vhd
+l0
+L5 1
+VNWbk`[D]VYEMnF@B5Rd>[2
+!s100 KXgf6H=G9P@AJPHLH8GS[0
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1712297721
+!i10b 1
+Z9 !s108 1712297721.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Project/uart_rx.vhd|
+Z11 !s107 C:/Users/Tom/Desktop/ENSC350/Project/uart_rx.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Abehavior
+R1
+R2
+R3
+DEx4 work 7 uart_rx 0 22 NWbk`[D]VYEMnF@B5Rd>[2
+!i122 84
+l23
+L15 147
+VYGGK^QJa37A74JUR0P>7j3
+!s100 L]OIkM=?BZ?9gj8XFAc6e0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Euart_rx_tb
+Z14 w1712189870
+R1
+R2
+R3
+!i122 85
+R4
+Z15 8C:/Users/Tom/Desktop/ENSC350/Project/uart_rx_tb.vhd
+Z16 FC:/Users/Tom/Desktop/ENSC350/Project/uart_rx_tb.vhd
+l0
+L5 1
+V5WfCHPln3zYck^hSLDzbI3
+!s100 M;<1g5eHH:0jK5981bn4R1
+R7
+32
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Project/uart_rx_tb.vhd|
+Z18 !s107 C:/Users/Tom/Desktop/ENSC350/Project/uart_rx_tb.vhd|
+!i113 1
+R12
+R13
+Abehavior
+R1
+R2
+R3
+Z19 DEx4 work 10 uart_rx_tb 0 22 5WfCHPln3zYck^hSLDzbI3
+!i122 85
+l43
+Z20 L8 95
+Z21 VN0D[UDFHAl]3@i3@a@;BA2
+Z22 !s100 zFO9GRIQ:@C<VCkcSTPF@2
+R7
+32
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
+Euart_tx
+Z23 w1712167881
+R1
+R2
+R3
+!i122 83
+R4
+Z24 8C:/Users/Tom/Desktop/ENSC350/Project/uart_tx.vhd
+Z25 FC:/Users/Tom/Desktop/ENSC350/Project/uart_tx.vhd
+l0
+L5 1
+V6TN^8;9EP=a?]CPkKLm>M2
+!s100 OKZTZG`0ZHBh1@1giN6Rd0
+R7
+32
+R8
+!i10b 1
+R9
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Project/uart_tx.vhd|
+Z27 !s107 C:/Users/Tom/Desktop/ENSC350/Project/uart_tx.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R1
+R2
+R3
+DEx4 work 7 uart_tx 0 22 6TN^8;9EP=a?]CPkKLm>M2
+!i122 83
+l22
+L15 128
+V8[BR]HzGidnijQi_d?;1K1
+!s100 O7zX^RgJG93iciaGj]I;_3
+R7
+32
+R8
+!i10b 1
+R9
+R26
+R27
+!i113 1
+R12
+R13
+Euart_tx_tb
+Z28 w1712168025
+R1
+R2
+R3
+!i122 19
+R4
+Z29 8C:/Users/Tom/Desktop/ENSC350/Project/uart_tx_tb.vhd
+Z30 FC:/Users/Tom/Desktop/ENSC350/Project/uart_tx_tb.vhd
+l0
+L5 1
+VIFB`G>LiAk^j5El6=SZiI0
+!s100 B4>:jHm^a_8N:h[zD33Gb2
+R7
+32
+Z31 !s110 1712168036
+!i10b 1
+Z32 !s108 1712168036.000000
+Z33 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Tom/Desktop/ENSC350/Project/uart_tx_tb.vhd|
+Z34 !s107 C:/Users/Tom/Desktop/ENSC350/Project/uart_tx_tb.vhd|
+!i113 1
+R12
+R13
+Abehavior
+R1
+R2
+R3
+DEx4 work 10 uart_tx_tb 0 22 IFB`G>LiAk^j5El6=SZiI0
+!i122 19
+l29
+L8 71
+Vb7CZJ>3E2a[3o_mj?[FRD3
+!s100 [Bg^CUe=Bf?fF_VLVgzOh2
+R7
+32
+R31
+!i10b 1
+R32
+R33
+R34
+!i113 1
+R12
+R13
